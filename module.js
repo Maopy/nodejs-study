@@ -1,3 +1,7 @@
 module.exports = function () {
-  console.log(__dirname)
+  log(__dirname)
+}
+
+function log (name) {
+  console.log(name)
 }
