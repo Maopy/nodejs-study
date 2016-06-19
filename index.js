@@ -1,3 +1,3 @@
-module.exports = function () {
-  console.log(__dirname)
-}
+var module = require('./module')
+
+module()
