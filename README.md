@@ -1,6 +1,6 @@
 # nodejs-study
 
-[![build status][travis-image][https://travis-ci.org/Maopy/nodejs-study.svg?branch=master]]
+[![Build](https://travis-ci.org/Maopy/nodejs-study.svg?branch=master)](https://travis-ci.org/Maopy/nodejs-study)
 
 ## Install
 

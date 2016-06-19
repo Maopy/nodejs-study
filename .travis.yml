@@ -1,12 +1,9 @@
+sudo: false
 language: node_js
 node_js:
+  - latest
   - stable
   - 5
   - 4
-  - 3
-  - 2
-  - 1
-  - 0.12
-script:
+script: 
   - npm test
-  
