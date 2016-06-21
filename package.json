@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/server/",
     "test": "nyc ava test.js -v"
   },
   "repository": {
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/Maopy/nodejs-study#readme",
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "koa": "^2.0.0",
+    "koa-router": "^7.0.1"
   },
   "devDependencies": {
     "ava": "^0.15.2",
