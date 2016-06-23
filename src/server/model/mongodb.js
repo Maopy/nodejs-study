@@ -2,7 +2,11 @@
 
 let mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1/nodejs_study')
+mongoose.connect('mongodb://127.0.0.1:27017/nodejs_study', {
+  config: {
+    autoIndex: false
+  }
+})
 
 let db = mongoose.connection
 

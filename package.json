@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server/",
-    "test": "node ./src/server/ | nyc ava ./test/routes.js",
-    "testing": "nyc ava test.js -v"
+    "test": "nyc ava test.js -v",
+    "testing": "node ./src/server/ | nyc ava ./test/routes.js"
   },
   "repository": {
     "type": "git",
