@@ -1,12 +1,12 @@
 {
   "name": "nodejs-study",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server/",
     "dev": "supervisor ./src/server/",
-    "test": "ava test.js",
+    "test": "nyc ava test.js -v",
     "testing": "node ./src/server/ | nyc ava ./test/routes.js"
   },
   "repository": {
