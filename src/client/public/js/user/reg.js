@@ -15,6 +15,5 @@ $(() => {
         alert(`reg fail: ${res.errorInfo}`)
       }
     })
-    console.log('btn reg click')
   })
 })

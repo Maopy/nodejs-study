@@ -4,6 +4,44 @@ const router = require('koa-router')()
 
 const User = require('../model/user')
 
+router.post('/login', (ctx) => {
+  let loginUser = ctx.request.body
+
+  return User.findOneAsync({
+    username: loginUser.username
+  })
+    .then((user) => {
+      if (user) {
+        return user.comparePasswordAsync(loginUser.password)
+          .then((isMatch) => {
+            console.log(loginUser.password, isMatch)
+            if (isMatch) {
+              ctx.body = {
+                status: 0,
+                data: user
+              }
+            } else {
+              ctx.body = {
+                status: 101,
+                errorInfo: 'wrong password'
+              }
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+          })
+      } else {
+        ctx.body = {
+          status: 102,
+          errorInfo: 'user not exist'
+        }
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+})
+
 router.post('/reg', (ctx) => {
   let user = new User(ctx.request.body)
 
@@ -18,7 +56,7 @@ router.post('/reg', (ctx) => {
       if (~~err.code === 11000) {
         ctx.body = {
           status: 100,
-          errorInfo: '用户已存在'
+          errorInfo: 'user existed'
         }
       }
     })
