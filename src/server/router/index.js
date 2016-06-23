@@ -5,7 +5,14 @@ const router = require('koa-router')()
 const User = require('../model/user')
 
 router.post('/reg', (ctx) => {
-  let user = new User()
+  let user = new User(ctx.body)
+
+  try {
+    let res = user.saveAsync()
+    console.log(`save: ${res}`)
+  } catch (err) {
+    console.error(err)
+  }
 })
 
 router.get('/', (ctx) => {
@@ -14,23 +21,20 @@ router.get('/', (ctx) => {
     user: {}
   }
 
-  let user = new User({
-    username: 'Maopy',
-    password: '123456'
-  })
-  user.save((err, res) => {
-    if (err) {
-      return console.error(err)
-    }
-    console.log(`save: ${res}`)
-  })
+  // User.find((err, users) => {
+  //   if (err) {
+  //     return console.error(err)
+  //   }
+  //   console.log(`find: ${users}`)
+  // })
 
-  User.find((err, users) => {
-    if (err) {
-      return console.error(err)
-    }
-    console.log(`find: ${users}`)
-  })
+  User.findAsync()
+    .then((users) => {
+      console.log(`find: ${users}`)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 
   return ctx.render('index')
 })
