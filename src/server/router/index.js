@@ -5,14 +5,23 @@ const router = require('koa-router')()
 const User = require('../model/user')
 
 router.post('/reg', (ctx) => {
-  let user = new User(ctx.body)
+  let user = new User(ctx.request.body)
 
-  try {
-    let res = user.saveAsync()
-    console.log(`save: ${res}`)
-  } catch (err) {
-    console.error(err)
-  }
+  return user.saveAsync()
+    .then((res) => {
+      ctx.body = {
+        status: 0,
+        data: res
+      }
+    })
+    .catch((err) => {
+      if (~~err.code === 11000) {
+        ctx.body = {
+          status: 100,
+          errorInfo: '用户已存在'
+        }
+      }
+    })
 })
 
 router.get('/', (ctx) => {
@@ -20,13 +29,6 @@ router.get('/', (ctx) => {
     title: 'hi koa',
     user: {}
   }
-
-  // User.find((err, users) => {
-  //   if (err) {
-  //     return console.error(err)
-  //   }
-  //   console.log(`find: ${users}`)
-  // })
 
   User.findAsync()
     .then((users) => {
