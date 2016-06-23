@@ -13,17 +13,3 @@ test('open index page', async (t) => {
       t.is(res.status, 200)
     })
 })
-
-test('open login page', async (t) => {
-  await fetch(`${localhost}/login`)
-    .then((res) => {
-      t.is(res.status, 404)
-    })
-})
-
-test('open reg page', async (t) => {
-  await fetch(`${localhost}/reg`)
-    .then((res) => {
-      t.is(res.status, 200)
-    })
-})
