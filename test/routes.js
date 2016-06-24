@@ -31,6 +31,56 @@ test('reg success', async (t) => {
   t.true('password' in ret.data)
 })
 
+test('reg already exist', async (t) => {
+  let regUser = {
+    username: 'Maopy',
+    password: '123456'
+  }
+  let res = await superkoa('../src/server/app.js')
+    .post('/reg')
+    .send(regUser)
+  let ret = res.body
+  t.is(ret.status, 100)
+})
+
+test('login success', async (t) => {
+  let loginUser = {
+    username: 'Maopy',
+    password: '123456'
+  }
+  let res = await superkoa('../src/server/app.js')
+    .post('/login')
+    .send(loginUser)
+  let ret = res.body
+  t.is(ret.status, 0)
+  t.true('username' in ret.data)
+  t.true('password' in ret.data)
+})
+
+test('login wrong password', async (t) => {
+  let loginUser = {
+    username: 'Maopy',
+    password: '1234567'
+  }
+  let res = await superkoa('../src/server/app.js')
+    .post('/login')
+    .send(loginUser)
+  let ret = res.body
+  t.is(ret.status, 101)
+})
+
+test('login user not found', async (t) => {
+  let loginUser = {
+    username: 'Maopy2',
+    password: '123456'
+  }
+  let res = await superkoa('../src/server/app.js')
+    .post('/login')
+    .send(loginUser)
+  let ret = res.body
+  t.is(ret.status, 102)
+})
+
 // test('login success', async (t) => {
 //   let loginUser = {
 //     username: 'Maopy2',

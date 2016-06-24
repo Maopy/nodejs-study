@@ -56,7 +56,7 @@ router.post('/reg', (ctx) => {
       if (~~err.code === 11000) {
         ctx.body = {
           status: 100,
-          errorInfo: 'user existed'
+          errorInfo: 'user already exist'
         }
       }
     })
