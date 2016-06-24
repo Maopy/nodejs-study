@@ -6,15 +6,15 @@
   "scripts": {
     "start": "node ./src/server/",
     "dev": "supervisor ./src/server/",
-    "test": "nyc ava test.js -v",
-    "testing": "node ./src/server/ | nyc ava ./test/routes.js"
+    "test": "nyc ava ./test/routes.js",
+    "testing": "nyc ava test.js -v"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Maopy/nodejs-study.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Maopy/nodejs-study/issues"
   },
@@ -31,14 +31,12 @@
     "koa-static": "^3.0.0",
     "koa-views": "^5.0.1",
     "mongoose": "^4.5.1",
-    "node-fetch": "^1.5.3",
     "supervisor": "^0.11.0"
   },
   "devDependencies": {
     "ava": "^0.15.2",
-    "chai": "^3.5.0",
-    "nock": "^8.0.0",
     "nyc": "^6.6.1",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "supertest": "^1.2.0"
   }
 }
