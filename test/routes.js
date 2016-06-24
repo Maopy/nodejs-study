@@ -3,11 +3,19 @@
 import test from 'ava'
 import request from 'supertest'
 
+import mongodb from '../src/server/model/mongodb'
+
 const superkoa = (appPath) => {
   let _path = appPath !== undefined ? appPath : '../../app.js'
   let koa = require(_path)
   return request(koa.listen())
 }
+
+test.cb.after.always('clean up', (t) => {
+  mongodb.connection.db.dropDatabase((err, res) => {
+    t.end()
+  })
+})
 
 test('reg success', async (t) => {
   let regUser = {

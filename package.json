@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/server/",
     "dev": "supervisor ./src/server/",
-    "test": "nyc ava ./test/routes.js",
+    "test": "NODE_ENV=test nyc ava ./test/routes.js",
     "testing": "nyc ava test.js -v"
   },
   "repository": {

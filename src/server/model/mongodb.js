@@ -2,7 +2,13 @@
 
 let mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/nodejs_study')
+const env = process.env.NODE_ENV || 'production'
+
+if (env === 'test') {
+  mongoose.connect('mongodb://127.0.0.1:27017/test')
+} else {
+  mongoose.connect('mongodb://127.0.0.1:27017/nodejs_study')
+}
 
 let db = mongoose.connection
 
