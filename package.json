@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node ./src/server/",
     "dev": "supervisor ./src/server/",
-    "test": "NODE_ENV=test nyc ava ./test/routes.js -s -v",
-    "testing": "NODE_ENV=test nyc ava ./test/routes.js"
+    "test": "NODE_ENV=test nyc ava test/routes.js -s -v",
+    "testing": "NODE_ENV=test nyc ava test/routes.js -v"
   },
   "repository": {
     "type": "git",

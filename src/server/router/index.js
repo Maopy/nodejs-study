@@ -63,35 +63,22 @@ router.post('/reg', (ctx) => {
 })
 
 router.get('/', (ctx) => {
-  ctx.state = {
-    title: 'hi koa',
-    user: {}
-  }
-
-  User.findAsync()
-    .then((users) => {
-      console.log(`find: ${users}`)
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+  // User.findAsync()
+  //   .then((users) => {
+  //     console.log(`find: ${users}`)
+  //   })
+  //   .catch((err) => {
+  //     console.error(err)
+  //   })
 
   return ctx.render('index')
 })
 
 router.get('/login', (ctx) => {
-  ctx.state = {
-    title: 'Login'
-  }
-
   return ctx.render('user/login')
 })
 
 router.get('/reg', (ctx) => {
-  ctx.state = {
-    title: 'Register'
-  }
-
   return ctx.render('user/reg')
 })
 

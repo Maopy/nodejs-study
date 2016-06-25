@@ -10,8 +10,8 @@ const multer = require('koa-multer')
 const router = require('./router/')
 
 const app = new Koa()
-const viewPath = path.join(path.resolve(), 'src/client/view')
-const staticPath = path.join(path.resolve(), 'src/client/public')
+const viewPath = path.join(__dirname, '../../', 'src/client/view')
+const staticPath = path.join(__dirname, '../../', 'src/client/public')
 
 app.use(bodyParser())
 
