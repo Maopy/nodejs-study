@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Maopy/nodejs-study#readme",
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.4.1",
     "debug": "^2.2.0",
     "ejs": "^2.4.2",
